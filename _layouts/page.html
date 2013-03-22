@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>hapi by walmartlabs</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/html5shiv.js"></script>
+</head>
+<body>
+
+<header class="header" role="banner">
+    <div class="l-constrained">
+        <h1 class="logo logo-small">
+            <a title="Return to Home" href="/">
+                <img width="150" height="104" src="/img/logo-small.png" alt="hapi">
+            </a>
+        </h1>
+    </div>
+</header>
+
+<section role="main">
+    <div class="l-constrained">
+
+        <div class="l-row">
+            <div class="l-col1 sidebar">
+
+                <h3><a href="">Server Construction</a></h3>
+
+                <h3><a href="">Server Configuration</a></h3>
+
+                <ul>
+                    <li><a href="">TLS</a></li>
+                    <li><a href="">Router</a></li>
+                    <li><a href="">Payload</a></li>
+                    <li><a href="">Extensions</a></li>
+                    <li><a href="">Static Files</a></li>
+                    <li><a href="">Views</a></li>
+                    <li><a href="">Monitor</a></li>
+                    <li><a href="">Authentication</a></li>
+                    <li><a href="">Cache</a></li>
+                    <li><a href="">CORS</a></li>
+                    <li><a href="">Batch</a></li>
+                    <li><a href="">State</a></li>
+                    <li><a href="">Timeout</a></li>
+                </ul>
+
+                <h3><a href="">Server Route Not Found</a></h3>
+
+                <h3><a href="">Route Configuration</a></h3>
+
+                <ul>
+                    <li><a href="">Configuration options</a></li>
+                    <li><a href="">Override Route Defaults</a></li>
+                    <li><a href="">Path Processing</a>
+                        <ul>
+                            <li><a href="">Route Matching Order</a></li>
+                            <li><a href="">Parameters</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Route Handler</a>
+                        <ul>
+                            <li><a href="">Response</a></li>
+                            <li><a href="">Proxy</a></li>
+                            <li><a href="">File</a></li>
+                            <li><a href="">Directory</a></li>
+                            <li><a href="">View</a></li>
+                            <li><a href="">Request Logging</a></li>
+                            <li><a href="">Not Found</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Route Authentication</a></li>
+                    <li><a href="">Query Validation</a></li>
+                    <li><a href="">Payload Validation</a></li>
+                    <li><a href="">Path Validation</a></li>
+                    <li><a href="">Response Validation</a></li>
+                    <li><a href="">Caching</a></li>
+                    <li><a href="">Prerequisites</a></li>
+                </ul>
+
+                <h3><a href="">Data Validation</a></h3>
+
+                <h3><a href="">Response Errors</a></h3>
+
+                <h3><a href="">State Management</a></h3>
+
+                <h3><a href="">General Events Logging</a></h3>
+
+                <h3><a href="">Request Tails</a></h3>
+
+                <h3><a href="">Request Injection</a></h3>
+
+                <h3><a href="">Server Helpers</a></h3>
+
+                <h3><a href="">Server Plugins</a></h3>
+
+            </div>
+            <div class="l-col2">
+                <h1>API Reference</h1>
+
+                <p>Please note that any feature left undocumented is experimental and may have breaking changes in future releases.</p>
+
+                <h2>Server Construction</h2>
+
+                <p>The hapi Server object is the core of the framework and is constructed by instantiating a new Server object with the following optional parameters:</p>
+
+                <ul>
+                    <li>host' - optional host name. Defaults to 'localhost'.</li>
+                    <li>'port' - optional port. Defaults to '80' (or '443' for TLS).</li>
+                    <li>'options' - optional configuration as described in <a href="">Server Configuration</a>.</li>
+                </ul>
+
+<pre>
+var Hapi = require('hapi');
+
+// Create a server on localhost port 80
+var server = new Hapi.Server();
+</pre>
+
+                <h2>Server Configuration</h2>
+
+                <p><b>hapi</b> provides a rich set of configuration options for each server instance:</p>
+
+                <ul>
+                    <li>tls</li>
+                    <li>router</li>
+                    <li>payload</li>
+                    <li>files</li>
+                    <li>monitor</li>
+                    <li>authentication</li>
+                    <li>cache</li>
+                    <li>cors</li>
+                    <li>batch</li>
+                    <li>state</li>
+                </ul>
+
+                <h3>TLS</h3>
+
+                <p><b>hapi</b> creates an HTTP server by default. To create an HTTPS server, include the tls object in the server configuration. The tls object is passed unchanged to the node.js HTTPS server and described in the <a href="">node.js HTTPS documentation</a>.</p>
+
+<pre>
+var Hapi = require('hapi');
+
+var options = {
+    tls: {
+        key: 'your_key',
+        cert: 'your_cert'
+    }
+};
+
+var server = new Hapi.Server(options);
+</pre>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="copyright">
+        <p>Copyright © Walmart Labs 2013</p>
+    </footer>
+</section>
+
+<script type="text/javascript" src="//use.typekit.net/vjn6umd.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</body>
+</html>
