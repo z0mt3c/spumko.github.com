@@ -4,6 +4,8 @@ title: Validation
 category: example
 ---
 
+#Validation
+
 Try various URLs like:
 * http://localhost:8080/ // success
 * http://localhost:8080/?username=test // success
