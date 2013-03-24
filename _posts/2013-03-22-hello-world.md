@@ -12,11 +12,13 @@ npm init
 ```
 
 Now install **hapi** and have it saved to your _package.json_ dependencies by running
+
 ```
 npm install hapi --save
 ```
 
 Next create an _'index.js'_ file and add the following contents to it:
+
 ```javascript
 var Hapi = require('hapi');
 
