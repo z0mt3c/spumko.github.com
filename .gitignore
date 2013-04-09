@@ -1,4 +1,5 @@
 _site
+_cache
 .idea
 npm-debug.log
 .DS_Store

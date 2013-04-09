@@ -3,32 +3,18 @@ layout: resource
 title: Tutorials
 category: resource
 ---
+TOC
 
-{% capture sidebar %}
-{% raw %}
+## Plugins
 
-###[Plugins](#plugins)
-####[Prerequisites](#prerequisites)
-####[Creating an API](#creating-an-api)
-####[Routing](#routing)
-####[Plugging into a Subset of Servers](#plugging-into-a-subset-of-servers)
-
-{% endraw %}
-{% endcapture %}
-
-{% capture main %}
-{% raw %}
-
-<h2 id="plugins">Plugins</h2>
-
-<h3 id="prerequisites">Prerequisites</h3>
+### Prerequisites
 
 1. Hapi version 0.15.x or greater is installed
 2. A folder with a package.json and main entry point file exist (index.js)
 
 Please read the reference guide for an overview of creating the [plugin structure](docs/Reference.md#creating-a-plugin).
 
-<h3 id="creating-an-api">Creating an API</h3>
+### Creating an API
 
 A plugin always has the ability to add properties and methods to the _'api'_ object.  This object is useful for exposing any functionality publically.  This tutorial will demonstrate how to add a function and property to this object.
 
@@ -70,7 +56,7 @@ server.plugin.require('api-plugin', function (err) {
 
 After the plugin is successfully required the server is started and then the plugin api method is invoked, outputting 'Hello World' to the console.
 
-<h3 id="routing">Routing</h3>
+### Routing
 
 When a pack allows the _'route'_ permission then any plugin within the pack can add routes to the server.  In the plugin module export a _'register'_ function with the following signature:
 
@@ -103,7 +89,7 @@ exports.register = function (pack, options, next) {
 };
 ```
 
-<h3 id="plugging-into-a-subset-of-servers">Plugging into a Subset of Servers</h3>
+### Plugging into a Subset of Servers
 
 The _'register'_ method for a plugin is passed a _'pack'_ object.  This object has a _'select'_ method that returns a pack of servers that match the provided criteria.  In the following, all of the servers that support TLS will be selected and a route will be added to them.
 
@@ -156,15 +142,3 @@ exports.register = function (pack, options, next) {
     next();
 };
 ```
-
-{% endraw %}
-{% endcapture %}
-
-<div class="l-row">
-<div class="l-col1 sidebar">
-{{ sidebar | markdownify }}
-</div>
-<div class="l-col2">
-{{ main | markdownify }}
-</div>
-</div>
