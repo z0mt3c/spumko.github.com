@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>hapi - Hello World</title>
+    <title>hapi - Static Files</title>
 
     <meta name="viewport" content="width=device-width">
 
@@ -30,7 +30,9 @@
 
 <section role="main">
     <div class="l-constrained">
-        <h1 id="toc_13">Hello World</h1>
+        <h1 id="toc_11">Serving Static Files</h1>
+
+<p>The <strong>hapi</strong> route handler can be used to easily serve files, directories, render templates, and even proxy requests.  In this example the <em>&#39;directory&#39;</em> handler will be used to create a static site serving files in the <em>&#39;public&#39;</em> folder.</p>
 
 <p>Start by creating a <em>package.json</em> by running</p>
 <div class="highlight"><pre><code class="text">npm init
@@ -48,30 +50,29 @@
 <span class="c1">// Create a server with a host and port</span>
 <span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">Hapi</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">);</span>
 
-<span class="c1">// Define the route</span>
-<span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">handler</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-
-        <span class="nx">request</span><span class="p">.</span><span class="nx">reply</span><span class="p">({</span> <span class="nx">greeting</span><span class="o">:</span> <span class="s1">&#39;hello world&#39;</span> <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// Add the route</span>
 <span class="nx">server</span><span class="p">.</span><span class="nx">route</span><span class="p">({</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/hello&#39;</span><span class="p">,</span>
-    <span class="nx">config</span><span class="o">:</span> <span class="nx">hello</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/{path*}&#39;</span><span class="p">,</span>
+    <span class="nx">handler</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">directory</span><span class="o">:</span> <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;./public&#39;</span><span class="p">,</span> <span class="nx">listing</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">index</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="c1">// Start the server</span>
 <span class="nx">server</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 </code></pre>
 </div>
 
-<p>Start the server with <code>node .</code> and navigate to the website at &#39;http://localhost:8000/hello&#39; in a browser and you will see the following output:</p>
-<div class="highlight"><pre><code class="json"><span class="p">{</span><span class="nt">&quot;greeting&quot;</span><span class="p">:</span><span class="s2">&quot;hello world&quot;</span><span class="p">}</span>
+<p>Create a folder named <em>&#39;public&#39;</em> and add a <em>&#39;index.html&#39;</em> file in the folder with the following contents:</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;&lt;title&gt;</span>Hello Static<span class="nt">&lt;/title&gt;&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        Hello Static
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </code></pre>
 </div>
+
+<p>Now when you request &#39;http://localhost:8000&#39; you will see the html page rendered.  You can add other files in this folder and they will be served.  This is a good solution for serving static assets like images and css files.</p>
 
     </div>
 
