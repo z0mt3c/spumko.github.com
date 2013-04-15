@@ -1,3 +1,12 @@
 .sidebar li {
-	list-style: none;
+  list-style: none;
+}
+
+body {
+  position: relative;
+  min-width: 700px;
+}
+
+.logo img {
+  height: auto;
 }
