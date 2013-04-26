@@ -41,3 +41,8 @@ body {
 
   text-align: right;
 }
+
+.video-container {
+  border: 10px solid #834b0f;
+  border-radius: 6px;
+}
