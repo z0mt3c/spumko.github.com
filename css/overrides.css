@@ -8,5 +8,41 @@ body {
 }
 
 .logo img {
+  position: static;
   height: auto;
+}
+
+.logo {
+  height: auto;
+  margin: 36px 0 26px;
+}
+
+.l-headerprimary {
+  width: 43.75%;
+}
+
+.l-headersecondary {
+  width: 46.25%;
+}
+
+.tagline {
+  margin-top: 40px;
+
+  font-family: Omnes-Pro, Proxima-Nova-Soft, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.intro, .footnote {
+  margin-left: 24px;
+}
+
+.version {
+  margin-right: 45px;
+
+  text-align: right;
+}
+
+.video-container {
+  border: 10px solid #834b0f;
+  border-radius: 6px;
 }
