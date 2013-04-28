@@ -1,4 +1,4 @@
-hapiversion: 0.16.0
+hapiversion: 1.0.0
 
 auto: true
 pygments: true
