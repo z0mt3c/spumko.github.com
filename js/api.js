@@ -7,14 +7,15 @@
       headingsLength = headings.length,
       scrolled = false,
       match, matchElement, targetElement, headingOffset, i,
-      tocPosition = null;
+      tocPosition = null,
+      tocElement = document.querySelector('.api-toc');
 
-  var tocContent = sidebar.innerHTML,
-      tocElement = document.createElement('div');
+  // var tocContent = sidebar.innerHTML,
+  //     tocElement = document.createElement('div');
 
-  tocElement.innerHTML = tocContent;
-  tocElement.className = 'api-toc';
-  main.insertBefore(tocElement, mainChild);
+  // tocElement.innerHTML = tocContent;
+  // tocElement.className = 'api-toc';
+  // main.insertBefore(tocElement, mainChild);
 
   var selectSection = function() {
     for (i = 0; i < headingsLength; i++) {
