@@ -26,8 +26,9 @@
             prevHeaderNum = headerNum;
         });
 
-        // $('.sidebar').append(toc);
+        if ( ('.api').length > 0 ) {
+            $('.sidebar').append(toc);
+        }
 
-        // $('.api-toc').append(toc.clone());
     };
 })(jQuery);
