@@ -14,7 +14,7 @@ body {
 
 .logo {
   height: auto;
-  margin: 36px 0 26px;
+  margin: 60px 0 26px;
 }
 
 .l-headerprimary {
@@ -37,9 +37,11 @@ body {
 }
 
 .version {
-  margin-right: 45px;
-
-  text-align: right;
+  font-family: Omnes-Pro, Proxima-Nova-Soft, Helvetica Neue, Helvetica, Arial, sans-serif;
+  position: relative;
+  top: -47px;
+  left: 345px;
+  font-weight: bold;
 }
 
 .video-container {
