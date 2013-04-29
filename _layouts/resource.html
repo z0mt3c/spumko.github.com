@@ -20,7 +20,7 @@
 
 <header class="header" role="banner">
     <div class="l-constrained">
-        <h1 class="logo logo-small">
+        <h1 class="logo-small">
             <a title="Return to Home" href="/">
                 <img width="150" height="104" src="/img/logo-small.png" alt="hapi">
             </a>
@@ -30,7 +30,13 @@
 
 <section role="main">
     <div class="l-constrained">
-        {{ content }}
+        <div class="l-row">
+            <div class="l-col1 sidebar">
+            </div>
+            <div class="l-col2">
+                {{ content }}
+            </div>
+        </div>
     </div>
 
     <footer class="copyright">
@@ -40,6 +46,12 @@
 
 <script type="text/javascript" src="//use.typekit.net/vjn6umd.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
+<script type="text/javascript" src="/js/vendor/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="/js/ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.toc.register();
+    });
+</script>
 </body>
 </html>
