@@ -3,7 +3,6 @@ layout: resource
 title: Tutorials
 category: resource
 ---
-TOC
 
 ## Plugins
 

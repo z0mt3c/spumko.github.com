@@ -6,7 +6,8 @@
       mainChild = main.firstChild,
       headingsLength = headings.length,
       scrolled = false,
-      match, matchElement, targetElement, headingOffset, i;
+      match, matchElement, targetElement, headingOffset, i,
+      tocPosition = null;
 
   var tocContent = sidebar.innerHTML,
       tocElement = document.createElement('div');
@@ -14,8 +15,6 @@
   tocElement.innerHTML = tocContent;
   tocElement.className = 'api-toc';
   main.insertBefore(tocElement, mainChild);
-
-  var tocPosition = tocElement.offsetHeight + tocElement.offsetTop;
 
   var selectSection = function() {
     for (i = 0; i < headingsLength; i++) {
@@ -32,6 +31,10 @@
   };
 
   var expandNav = function(element) {
+    if (tocPosition === null) {
+      tocPosition = tocElement.offsetHeight + tocElement.offsetTop;
+    }
+
     var expanded = document.querySelectorAll('.active'),
         expandedLength = expanded.length,
         i;
