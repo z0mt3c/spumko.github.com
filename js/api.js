@@ -1,46 +1,51 @@
 (function() {
 
-  var headings = document.querySelectorAll('h2'),
-      sidebar = document.querySelector('.sidebar'),
+  var sidebar = document.querySelector('.sidebar'),
       sidebarPos = sidebar.offsetTop,
-      main = document.querySelector('.main'),
-      mainChild = main.firstChild,
-      headingsLength = headings.length,
-      scrolled = false,
-      match, matchElement, targetElement, headingOffset, i,
       apitoc = document.querySelector('.api-toc'),
-      apitocPosition = apitoc.offsetTop + apitoc.offsetHeight;
+      apitocPosition = apitoc.offsetTop + apitoc.offsetHeight,
+      scrolled = false;
 
   var selectSection = function() {
-    for (i = 0; i < headingsLength; i++) {
-      headingOffset = headings[i].offsetTop;
+    var headings = document.querySelectorAll('h2'),
+        subHeadings = document.querySelectorAll('h3, h4');
 
-      if (window.pageYOffset < apitocPosition) {
-        expandNav();
-      }
+    if (window.pageYOffset < apitocPosition) {
+      displaySection(null, 'active');
+    }
 
-      if (window.pageYOffset > headingOffset) {
-        match = headings[i].id;
-        matchElement = document.querySelector('.sidebar a[href="#' + match + '"]');
+    checkPosition(headings, 'active');
+    checkPosition(subHeadings, 'highlighted');
+  };
+
+  var checkPosition = function(selection, action) {
+    var selectionLength = selection.length,
+        match, matchElement, targetElement, selectionOffset, i;
+
+    for (i = 0; i < selectionLength; i++) {
+      selectionOffset = selection[i].offsetTop;
+
+      if (window.pageYOffset > selectionOffset) {
+        match = selection[i].id;
+        matchElement = sidebar.querySelector('a[href="#' + match + '"]');
         targetElement = matchElement.parentNode;
 
-        expandNav(targetElement);
+        displaySection(targetElement, action);
       }
     }
   };
 
-  var expandNav = function(element) {
-
-    var expanded = document.querySelectorAll('.active'),
-        expandedLength = expanded.length,
+  var displaySection = function(element, action) {
+    var target = document.querySelectorAll('.' + action),
+        targetLength = target.length,
         i;
 
-    for (i = 0; i < expandedLength; i++) {
-      expanded[i].className = '';
+    for (i = 0; i < targetLength; i++) {
+      target[i].className = '';
     }
 
     if (element) {
-      element.className = 'active';
+      element.className = action;
     }
   };
 
@@ -58,8 +63,8 @@
 
   var expanderInterval = setInterval(function() {
     if (scrolled) {
-        scrolled = false;
-        selectSection();
+      scrolled = false;
+      selectSection();
     }
   }, 250);
 
