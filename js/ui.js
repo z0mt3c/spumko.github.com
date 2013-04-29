@@ -17,7 +17,7 @@
                 $('ul.' + level + ':last', toc).append("<li><a href=\"#" + headingId + "\">" + headingText + "</a></li>");
             }
             else if (prevHeaderNum < headerNum) {
-                $('ul.' + level + ':last', toc).append("<li><ul class=\"" + ++level + "\"><li><a href=\"#" + headingId + "\">" + headingText + "</a></li></ul></li>");
+                $('ul.' + level + ':last li:last', toc).append("<ul class=\"" + ++level + "\"><li><a href=\"#" + headingId + "\">" + headingText + "</a></li></ul>");
             }
             else {
                 $('ul.' + --level + ':last', toc).append("<li><a href=\"#" + headingId + "\">" + headingText + "</a></li>");
@@ -26,6 +26,9 @@
             prevHeaderNum = headerNum;
         });
 
-        $('.sidebar').append(toc);
+        if ( ('.api').length > 0 ) {
+            $('.sidebar').append(toc);
+        }
+
     };
 })(jQuery);
