@@ -2,24 +2,22 @@
 
   var headings = document.querySelectorAll('h2'),
       sidebar = document.querySelector('.sidebar'),
+      sidebarPos = sidebar.offsetTop,
       main = document.querySelector('.main'),
       mainChild = main.firstChild,
       headingsLength = headings.length,
       scrolled = false,
       match, matchElement, targetElement, headingOffset, i,
-      tocPosition = null,
-      tocElement = document.querySelector('.api-toc');
-
-  // var tocContent = sidebar.innerHTML,
-  //     tocElement = document.createElement('div');
-
-  // tocElement.innerHTML = tocContent;
-  // tocElement.className = 'api-toc';
-  // main.insertBefore(tocElement, mainChild);
+      apitoc = document.querySelector('.api-toc'),
+      apitocPosition = apitoc.offsetTop + apitoc.offsetHeight;
 
   var selectSection = function() {
     for (i = 0; i < headingsLength; i++) {
       headingOffset = headings[i].offsetTop;
+
+      if (window.pageYOffset < apitocPosition) {
+        expandNav();
+      }
 
       if (window.pageYOffset > headingOffset) {
         match = headings[i].id;
@@ -32,9 +30,6 @@
   };
 
   var expandNav = function(element) {
-    if (tocPosition === null) {
-      tocPosition = tocElement.offsetHeight + tocElement.offsetTop;
-    }
 
     var expanded = document.querySelectorAll('.active'),
         expandedLength = expanded.length,
@@ -44,13 +39,15 @@
       expanded[i].className = '';
     }
 
-    element.className = 'active';
+    if (element) {
+      element.className = 'active';
+    }
   };
 
   document.addEventListener('scroll', function() {
     scrolled = true;
 
-    if (window.pageYOffset > tocPosition) {
+    if (window.pageYOffset + 24 > sidebarPos) {
       if (sidebar.className.indexOf('fixed') === -1) {
         sidebar.className += ' fixed';
       }

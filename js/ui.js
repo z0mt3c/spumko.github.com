@@ -26,7 +26,7 @@
             prevHeaderNum = headerNum;
         });
 
-        if ( ('.api').length > 0 ) {
+        if ( ('.api').length === 0 ) {
             $('.sidebar').append(toc);
         }
 
