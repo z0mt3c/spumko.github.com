@@ -50,7 +50,7 @@ class Jekyll::MarkdownConverter
       html_renderer = Redcarpet::Markdown.new(Redcarpet2Markdown.new(extensions), extensions)
       toc  = html_toc.render(content)
       html = html_renderer.render(content)
-      full = "<div class=\"l-row\"><div class=\"l-col1 sidebar\">" + toc + "</div><div class=\"l-col2\">" + html + "</div></div>"
+      full = "<div class=\"l-row\"><div class=\"l-col1 sidebar\">" + toc + "</div><div class=\"l-col2 main\">" + html + "</div></div>"
     else
       markdown.render(content)
     end

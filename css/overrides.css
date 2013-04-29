@@ -46,3 +46,56 @@ body {
   border: 10px solid #834b0f;
   border-radius: 6px;
 }
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: inherit;
+}
+
+.api .sidebar.fixed {
+  position: fixed;
+  top: 24px;
+  width: 296px;
+  margin-left: 24px;
+}
+
+.api .sidebar li {
+  display: none;
+}
+
+.api .sidebar.fixed .active, .api .sidebar.fixed .active li {
+  display: block;
+}
+
+.api .sidebar.fixed ul ul ul ul {
+  display: none !important;
+}
+
+.api .main {
+  margin-left: 367px;
+}
+
+.api-toc ul {
+  margin: 0;
+  padding: 0;
+
+  font-size: 24px;
+  font-weight: bold;
+  list-style: none;
+}
+
+.api-toc ul ul {
+  padding-left: 24px;
+
+  font-size: 16px;
+  font-weight: normal;
+  list-style: none;
+}
+
+.api-toc a {
+  display: block;
+  padding: 3px 0;
+}
+
+.l-constrained {
+  width: 960px;
+}
