@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>hapi - Static Files</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/overrides.css">
+
+    <script src="/js/vendor/html5shiv.js"></script>
+</head>
+<body>
+
+<header class="header" role="banner">
+    <div class="l-constrained">
+        <h1 class="logo logo-small">
+            <a title="Return to Home" href="/">
+                <img width="150" height="104" src="/img/logo-small.png" alt="hapi">
+            </a>
+        </h1>
+    </div>
+</header>
+
+<section role="main">
+    <div class="l-constrained">
+        <h1 id="toc_11">Serving Static Files</h1>
+
+<p>The <strong>hapi</strong> route handler can be used to easily serve files, directories, render templates, and even proxy requests.  In this example the <em>&#39;directory&#39;</em> handler will be used to create a static site serving files in the <em>&#39;public&#39;</em> folder.</p>
+
+<p>Start by creating a <em>package.json</em> by running</p>
+<div class="highlight"><pre><code class="text">npm init
+</code></pre>
+</div>
+
+<p>Now install <strong>hapi</strong> and have it saved to your <em>package.json</em> dependencies by running</p>
+<div class="highlight"><pre><code class="text">npm install hapi --save
+</code></pre>
+</div>
+
+<p>Next create an <em>&#39;index.js&#39;</em> file and add the following contents to it:</p>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Hapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">);</span>
+
+<span class="c1">// Create a server with a host and port</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">Hapi</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">);</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">route</span><span class="p">({</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/{path*}&#39;</span><span class="p">,</span>
+    <span class="nx">handler</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">directory</span><span class="o">:</span> <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;./public&#39;</span><span class="p">,</span> <span class="nx">listing</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">index</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>Create a folder named <em>&#39;public&#39;</em> and add a <em>&#39;index.html&#39;</em> file in the folder with the following contents:</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;&lt;title&gt;</span>Hello Static<span class="nt">&lt;/title&gt;&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        Hello Static
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>Now when you request &#39;http://localhost:8000&#39; you will see the html page rendered.  You can add other files in this folder and they will be served.  This is a good solution for serving static assets like images and css files.</p>
+
+    </div>
+
+    <footer class="copyright">
+        <p>Copyright © Walmart 2013</p>
+    </footer>
+</section>
+
+<script type="text/javascript" src="//use.typekit.net/vjn6umd.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</body>
+</html>

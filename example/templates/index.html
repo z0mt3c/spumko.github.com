@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>hapi - Templates</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/overrides.css">
+
+    <script src="/js/vendor/html5shiv.js"></script>
+</head>
+<body>
+
+<header class="header" role="banner">
+    <div class="l-constrained">
+        <h1 class="logo logo-small">
+            <a title="Return to Home" href="/">
+                <img width="150" height="104" src="/img/logo-small.png" alt="hapi">
+            </a>
+        </h1>
+    </div>
+</header>
+
+<section role="main">
+    <div class="l-constrained">
+        <h1 id="toc_10">Rendering Templates</h1>
+
+<p>To demonstrate how to use <strong>hapi</strong> to render templates we will be creating a template and rendering it using the <a href="http://handlebarsjs.com/">handlebars</a> engine.</p>
+
+<p>Start by creating a <em>package.json</em> by running:</p>
+<div class="highlight"><pre><code class="bash">npm init
+</code></pre>
+</div>
+
+<p>Now install <strong>hapi</strong> and have it saved to your <em>package.json</em> dependencies by running</p>
+<div class="highlight"><pre><code class="bash">npm install hapi --save
+</code></pre>
+</div>
+
+<p>Next, install <strong>handlebars</strong> by running the following npm command:</p>
+<div class="highlight"><pre><code class="bash">npm install handlebars --save
+</code></pre>
+</div>
+
+<p>Next create a directory named <em>&#39;templates&#39;</em> that will contain the template files.  In this directory create a <em>&#39;index.html&#39;</em> with the following contents:</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>The next step is going to be to tell the <strong>hapi</strong> server to use templates and the handlebars engine.  After this, the route handler will be updated to render the template using an object that contains a <em>&#39;greeting&#39;</em> property we want displayed.  Create an <em>&#39;index.js&#39;</em> file and add the following contents:</p>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Hapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;./templates&#39;</span><span class="p">,</span>
+        <span class="nx">engine</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">module</span><span class="o">:</span> <span class="s1">&#39;handlebars&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Create a server with a host, port, and options</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">Hapi</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+
+<span class="c1">// Define the route</span>
+<span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">handler</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="c1">// Render the view with the custom greeting</span>
+        <span class="nx">request</span><span class="p">.</span><span class="nx">reply</span><span class="p">.</span><span class="nx">view</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">greeting</span><span class="o">:</span> <span class="s1">&#39;hello world&#39;</span> <span class="p">}).</span><span class="nx">send</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Add the route</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">route</span><span class="p">({</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="nx">config</span><span class="o">:</span> <span class="nx">hello</span>
+<span class="p">});</span>
+
+<span class="c1">// Start the server</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>When you run the server with <code>node .</code> and view the homepage you will see the custom greeting message rendered.  More information on using templates with <strong>hapi</strong> can be found in the <a href="docs/Reference.md#views">views</a> section of the <a href="docs/Reference.md">API Reference</a>.</p>
+
+    </div>
+
+    <footer class="copyright">
+        <p>Copyright © Walmart 2013</p>
+    </footer>
+</section>
+
+<script type="text/javascript" src="//use.typekit.net/vjn6umd.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</body>
+</html>
