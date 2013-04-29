@@ -51,7 +51,12 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   font-size: inherit;
 }
 
+.api .sidebar {
+  display: none;
+}
+
 .api .sidebar.fixed {
+  display: block;
   position: fixed;
   top: 24px;
   width: 296px;
