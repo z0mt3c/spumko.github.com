@@ -55,6 +55,8 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 
 .api .sidebar {
   position: absolute;
+  width: 296px;
+  margin-left: 24px;
 }
 
 .api .sidebar a {
@@ -71,8 +73,6 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   display: block;
   position: fixed;
   top: 24px;
-  width: 296px;
-  margin-left: 24px;
 }
 
 .api .sidebar li ul {
