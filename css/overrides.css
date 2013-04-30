@@ -54,7 +54,17 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 .api .sidebar {
-  display: none;
+  position: absolute;
+}
+
+.api .sidebar a {
+  padding: 1px 0;
+
+  font-size: 14px;
+}
+
+.api .sidebar .highlighted > a {
+  color: #00AFEE;
 }
 
 .api .sidebar.fixed {
@@ -65,11 +75,11 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   margin-left: 24px;
 }
 
-.api .sidebar li {
+.api .sidebar li ul {
   display: none;
 }
 
-.api .sidebar.fixed .active, .api .sidebar.fixed .active li {
+.api .sidebar .active ul {
   display: block;
 }
 
@@ -101,6 +111,8 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 .api-toc a {
   display: block;
   padding: 3px 0;
+
+  text-decoration: none;
 }
 
 .l-constrained {
