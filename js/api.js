@@ -25,7 +25,7 @@
     for (i = 0; i < selectionLength; i++) {
       selectionOffset = selection[i].offsetTop;
 
-      if (window.pageYOffset > selectionOffset) {
+      if (window.pageYOffset + 24 > selectionOffset) {
         match = selection[i].id;
         matchElement = sidebar.querySelector('a[href="#' + match + '"]');
         targetElement = matchElement.parentNode;
