@@ -38,13 +38,16 @@ server.start();
 ```
 
 Create a folder named _'public'_ and add a _'index.html'_ file in the folder with the following contents:
+
 ```html
+{% raw %}
 <html>
     <head><title>Hello Static</title></head>
     <body>
         Hello Static
     </body>
 </html>
+{% endraw %}
 ```
 
 Now when you request 'http://localhost:8000' you will see the html page rendered.  You can add other files in this folder and they will be served.  This is a good solution for serving static assets like images and css files.

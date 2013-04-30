@@ -26,13 +26,16 @@ npm install handlebars --save
 ```
 
 Next create a directory named _'templates'_ that will contain the template files.  In this directory create a _'index.html'_ with the following contents:
+
 ```html
+{% raw %}
 <html>
     <head><title>{{greeting}}</title></head>
     <body>
         {{greeting}}
     </body>
 </html>
+{% endraw %}
 ```
 
 The next step is going to be to tell the **hapi** server to use templates and the handlebars engine.  After this, the route handler will be updated to render the template using an object that contains a _'greeting'_ property we want displayed.  Create an _'index.js'_ file and add the following contents:
@@ -42,9 +45,9 @@ var Hapi = require('hapi');
 
 var options = {
     views: {
-        path: './templates',
-        engine: {
-            module: 'handlebars'
+        path: 'templates',
+        engines: {
+            html: 'handlebars'
         }
     }
 };
@@ -57,7 +60,7 @@ var hello = {
     handler: function (request) {
 
       // Render the view with the custom greeting
-        request.reply.view('index.html', { greeting: 'hello world' }).send();
+        request.reply.view('index.html', { greeting: 'hello world' });
     }
 };
 
