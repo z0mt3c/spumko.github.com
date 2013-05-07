@@ -75,4 +75,4 @@ server.route({
 server.start();
 ```
 
-When you run the server with `node .` and view the homepage you will see the custom greeting message rendered.  More information on using templates with **hapi** can be found in the [views](docs/Reference.md#views) section of the [API Reference](docs/Reference.md).
+When you run the server with `node .` and view the homepage you will see the custom greeting message rendered.  More information on using templates with **hapi** can be found in the [views](/resource/api/#server.config.views) section of the [API Reference](/resource/api/).
