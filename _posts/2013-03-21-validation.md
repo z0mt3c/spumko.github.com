@@ -36,7 +36,7 @@ var hello = {
     },
     validate: {
         query: {
-            name: Hapi.Types.String().required()
+            name: Hapi.types.String().required()
         }
     }
 };
