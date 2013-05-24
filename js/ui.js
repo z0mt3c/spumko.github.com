@@ -9,7 +9,7 @@
 
         $.each($('h2, h3, h4'), function(i, header) {
             var headingText = $(header).text();
-            var headingId = headingText.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+            var headingId = headingText.replace(/[^a-z0-9]/gi, '-').toLowerCase();
             $(header).attr("id", headingId);
             var headerNum = parseInt(header.tagName.replace(/H/i, ''));
 
