@@ -7,6 +7,7 @@
       scrolled = false;
 
   var selectSection = function() {
+    
     var headings = document.querySelectorAll('h2'),
         subHeadings = document.querySelectorAll('h3, h4');
 
@@ -19,10 +20,11 @@
   };
 
   var checkPosition = function(selection, action) {
+    
     var selectionLength = selection.length,
         match, matchElement, targetElement, selectionOffset, i;
 
-    for (i = 0; i < selectionLength; i++) {
+    for (i = 0; i < selectionLength; ++i) {
       selectionOffset = selection[i].offsetTop;
 
       if (window.pageYOffset + 24 > selectionOffset) {
@@ -36,11 +38,12 @@
   };
 
   var displaySection = function(element, action) {
+    
     var target = document.querySelectorAll('.' + action),
         targetLength = target.length,
         i;
 
-    for (i = 0; i < targetLength; i++) {
+    for (i = 0; i < targetLength; ++i) {
       target[i].className = '';
     }
 
@@ -57,7 +60,7 @@
         sidebar.className += ' fixed';
       }
     } else {
-      sidebar.className = sidebar.className.replace( /fixed/g , '' );
+      sidebar.className = sidebar.className.replace(/fixed/g , '');
     }
   });
 
