@@ -76,3 +76,7 @@ server.start();
 ```
 
 When you run the server with `node .` and view the homepage you will see the custom greeting message rendered.  More information on using templates with **hapi** can be found in the [views](/resource/api/#server.config.views) section of the [API Reference](/resource/api/).
+
+The main repository also contains example code of a **hapi** setup using
+[jade](http://jade-lang.com/). See the [jade
+example](https://github.com/spumko/hapi/tree/master/examples/views/jade).
