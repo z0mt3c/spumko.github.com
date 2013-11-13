@@ -32,4 +32,4 @@ server.addRoute({
 server.start();
 {% endhighlight %}
 
-Now navigate to <a href="">http://localhost:8080/hello</a> and you should receive 'hello world'.
+Now navigate to <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> and you should receive 'hello world'.
