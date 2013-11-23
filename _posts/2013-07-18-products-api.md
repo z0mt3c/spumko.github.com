@@ -116,7 +116,7 @@ function addProduct(request) {
 
     products.push(product);
 
-    request.reply(product).code(201).header('Location,: /products/' + product.id);
+    request.reply(product).code(201).header('Location', '/products/' + product.id);
 }
 ```
 
