@@ -52,7 +52,7 @@ server.addRoutes(routes);
 server.start();
 ```
 
-In the _server.js_ code above a new instance of the hapi server is started using the [server options](http://spumko.github.io/resource/api/#server-options) specified in _config_.  
+In the _server.js_ code above a new instance of the hapi server is started using the [server options](http://spumko.github.io/resource/api/#server-options) specified in _config_.
 
 By registering the lout plugin, the [documentation generator](https://github.com/spumko/lout) will be enabled.  The documentation generator provides a set of pages that explain what endpoints are available and the requirements for those endpoints.  The documentation generator will use the validation rules you will create for each route to construct appropriate documentation pages under the _/docs_ path.
 
@@ -138,7 +138,7 @@ var products = [{
 
 ***Running the server***
 
-Go ahead and run ``npm start`` or ``node server.js`` to start the server.  Now you can navigate to <http://localhost:8080/docs> to see the documentation for the routes.  To see a list of the products navigate to <http://locahost:8080/products>.  Below is a screenshot of what the response looks like.
+Go ahead and run ``npm start`` or ``node server.js`` to start the server.  Now you can navigate to <http://localhost:8080/docs> to see the documentation for the routes.  To see a list of the products navigate to <http://localhost:8080/products>.  Below is a screenshot of what the response looks like.
 
 <img src="https://raw.github.com/wpreul/hapi-example/master/images/products.png" height="75px" width="auto" />
 
