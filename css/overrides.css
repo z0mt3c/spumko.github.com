@@ -118,3 +118,31 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 .l-constrained {
   width: 960px;
 }
+
+/* Placeholder Page */
+
+.placeholder-headerprimary {
+  width: 420px;
+  margin: 0 auto;
+}
+
+.placeholder-headersecondary {
+  margin-top: -20px;
+
+  text-align: center;
+}
+
+.placeholder-headersecondary .tagline {
+  margin: 0 0 24px;
+}
+
+.placeholder-headersecondary .intro {
+  max-width: 750px;
+  margin: 0 auto;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+.intro-large {
+  font-size: 21px;
+}

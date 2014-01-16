@@ -4,7 +4,7 @@ server: true
 server_port: 8080
 permalink: /:categories/:title
 lsi: false
-exclude: ["package.json", "Gruntfile.js", "README.md"]
+exclude: ["package.json", "Gruntfile.js", "README.md", "node_modules"]
 
 markdown: redcarpet
 redcarpet:
