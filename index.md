@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: coming-soon
 title: hapi by walmartlabs
 video: q6Aofj2XDwE
 ---
